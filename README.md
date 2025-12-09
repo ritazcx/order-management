@@ -53,3 +53,13 @@ flowchart TD
 **n8n = 大脑（orchestration）
 LLM = 智能（reasoning）
 ML = 感知（classification）**
+
+## Documentation
+
+完整文档请参见 /docs：
+
+- [ML Training Guide](./docs/ml_training.md)
+- [System Architecture](./docs/architecture.md)
+- [Data Format](./docs/data_format.md)
+- [n8n Workflow](./docs/n8n_workflow.md)
+- [LLM Prompts](./docs/llm_prompts.md)
