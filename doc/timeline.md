@@ -38,17 +38,17 @@
 ## Checklist (Mark as Done)
 
 ### Day 1 — Data
-- [ ] Create 300–400 synthetic tickets  
-- [ ] Validate categories  
-- [ ] Validate severity rules  
+- [X] Create 300–400 synthetic tickets  
+- [X] Validate categories  
+- [X] Validate severity rules  
 
 ### Day 2 — Category Model
-- [ ] Train classifier  
-- [ ] Evaluate accuracy  
-- [ ] Save model + vectorizer  
+- [X] Train classifier  
+- [X] Evaluate accuracy  
+- [X] Save model + vectorizer  
 
 ### Day 3 — Severity Model
-- [ ] Train baseline severity model  
+- [X] Train baseline severity model  
 - [ ] Add keyword/hybrid rules  
 - [ ] Export hybrid severity classifier  
 
