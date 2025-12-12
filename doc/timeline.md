@@ -49,12 +49,12 @@
 
 ### Day 3 — Severity Model
 - [X] Train baseline severity model  
-- [ ] Add keyword/hybrid rules  
-- [ ] Export hybrid severity classifier  
+- [X] Add severity_ruls.md, complete train_severity model (with SentenceBERT)  
+- [X] Export hybrid severity classifier  
 
 ### Day 4 — Backend
-- [ ] Create FastAPI project  
-- [ ] Add `/predict` endpoint  
+- [X] Create FastAPI project  
+- [X] Add `/predict` endpoint  
 - [ ] Integrate hybrid logic  
 - [ ] Test locally  
 

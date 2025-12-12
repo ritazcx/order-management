@@ -1,0 +1,9 @@
+{
+  "version": "v1.0",
+  "category": {
+    "latest": "models/model_category.pkl"
+  },
+  "severity": {
+    "latest": "models/model_severity.pkl"
+  }
+}
