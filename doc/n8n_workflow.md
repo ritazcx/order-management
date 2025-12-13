@@ -19,74 +19,25 @@ n8n acts as the **central decision engine**.
 ---
 
 ## 2. High-Level Workflow Diagram
-
+```mermaid
 flowchart TD
-    A[Incoming Ticket<br/>(Email / Form / API)] --> B[n8n Webhook<br/>Receive Ticket]
+    A[Incoming Ticket<br>Email / Form / API] --> B[n8n Webhook<br>Receive Ticket]
 
-    B --> C[Call ML Prediction API<br/>(FastAPI)]
+    B --> C[Call ML Prediction API<br>FastAPI]
 
-    C --> D{Decision Engine<br/>Severity / Rules}
+    C --> D{Decision Engine<br>Severity / Rules}
 
-    D -->|Low / Medium| E[Template / Rule-based Reply]
+    D -->|Low / Medium| E[Template or Rule-based Reply]
 
     D -->|High / Complex| F[LLM Response Generation]
 
     F --> G[Optional Human Review]
 
-    E --> H[Send Response<br/>(Email / Slack / System)]
+    E --> H[Send Response<br>Email / Slack / System]
     G --> H
 
-    H --> I[Log Ticket & Metrics<br/>(DB / File / Dashboard)]
-
-```text
-┌────────────────────────────┐
-│ Incoming Ticket            │
-│ (Email / Form / API)       │
-└─────────────┬──────────────┘
-              ↓
-┌────────────────────────────┐
-│ Webhook (n8n)              │
-│ Receive ticket payload     │
-└─────────────┬──────────────┘
-              ↓
-┌────────────────────────────┐
-│ Call ML Service (FastAPI)  │
-│ - Category prediction     │
-│ - Severity prediction     │
-└─────────────┬──────────────┘
-              ↓
-┌────────────────────────────┐
-│ Decision Logic (Switch)    │
-│ Route by category          │
-└─────────────┬──────────────┘
-              ↓
-┌────────────────────────────┐
-│ Severity Check (IF)        │
-│ High / Medium / Low        │
-└─────────────┬──────────────┘
-      ┌───────┴────────┐
-      ↓                ↓
-┌──────────────┐   ┌────────────────┐
-│ Direct Reply │   │ Call LLM        │
-│ (Template)   │   │ (GPT / Claude)  │
-└──────┬───────┘   └───────┬────────┘
-       ↓                   ↓
-┌──────────────────────────────────┐
-│ Optional Human Review             │
-│ (Slack / Email Approval)          │
-└─────────────┬────────────────────┘
-              ↓
-┌────────────────────────────┐
-│ Send Response               │
-│ Email / Ticket System       │
-└─────────────┬──────────────┘
-              ↓
-┌────────────────────────────┐
-│ Log & Metrics               │
-│ DB / Sheet / Monitoring     │
-└────────────────────────────┘
+    H --> I[Log Ticket and Metrics<br>DB / File / Dashboard]
 ```
-
 ---
 
 ## 3. Node-by-Node Explanation
