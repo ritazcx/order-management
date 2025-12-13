@@ -55,8 +55,8 @@
 ### Day 4 — Backend
 - [X] Create FastAPI project  
 - [X] Add `/predict` endpoint  
-- [ ] Integrate hybrid logic  
-- [ ] Test locally  
+- [X] Integrate hybrid logic  
+- [X] Test locally  
 
 ### Day 5 — Deployment
 - [ ] Create Dockerfile  
