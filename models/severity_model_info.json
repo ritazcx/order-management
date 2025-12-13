@@ -1,0 +1,6 @@
+{
+  "sbert_model_name": "all-mpnet-base-v2",
+  "training_date": "2025-12-13 17:54:25",
+  "train_accuracy": 0.7866242038216561,
+  "test_accuracy": 0.5822784810126582
+}

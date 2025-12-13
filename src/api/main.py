@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, HTTPException
 from pydantic import BaseModel
 from src.inference.predictor import Predictor
 from src.api.schema import TicketRequest, TicketResponse
@@ -10,8 +10,21 @@ app = FastAPI(
     description="ML models for category & severity classification"
 )
 
-# Load predictor (loads the newest model from registry.json)
-predictor = Predictor()
+# ----------- event -----------
+@app.on_event("startup")
+def startup_event():
+    print("Starting up the Order Management ML API...") 
+    try:
+        app.state.predictor = Predictor()
+        print("Predictor loaded successfully.")
+    except Exception as e:
+        app.state.predictor = None
+        print(f"Error loading predictor: {e}")
+
+@app.on_event("shutdown")
+def shutdown_event():
+    print("Shutting down the Order Management ML API...") 
+    app.state.predictor = None
 
 # ----------- API Endpoints -----------
 
@@ -20,7 +33,10 @@ def health_check():
     return {"status": "ok"}
 
 @app.get("/version")
-def get_version():
+def get_version(request: Request):
+    predictor = getattr(request.app.state, "predictor", None)
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Predictor not loaded")
     return predictor.get_model_version()
 
 @app.post("/predict", response_model=TicketResponse)
@@ -28,7 +44,11 @@ def predict_ticket(req: TicketRequest):
 
     # input validation
     if not req.text or len(req.text.strip()) == 0:
-        return {"error": "Ticket text cannot be empty."}
+        raise HTTPException(status_code=400, detail="Input text cannot be empty")
+    predictor = getattr(request.app.state, "predictor", None)
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Predictor not loaded")
+
     pred = predictor.predict(req.text)
 
     return TicketResponse(

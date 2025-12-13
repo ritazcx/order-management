@@ -1,9 +1,13 @@
 {
   "version": "v1.0",
   "category": {
-    "latest": "models/model_category.pkl"
+    "vectorizer": "models/vectorizer_category.pkl",
+    "encoder": "models/encoder_category.pkl",
+    "model": "models/model_category.pkl"
   },
   "severity": {
-    "latest": "models/model_severity.pkl"
+    "encoder": "models/encoder_severity.pkl",
+    "model": "models/model_severity.pkl",
+    "sbert_model_name": "all-mpnet-base-v2"
   }
 }

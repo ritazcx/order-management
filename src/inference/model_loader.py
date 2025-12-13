@@ -8,9 +8,11 @@ def load_latest_models():
         reg = json.load(f)
 
     return {
-        "category_model": reg["category"]["latest"],
-        "severity_model": reg["severity"]["latest"],
+        "category_vectorizer": reg["category"]["vectorizer"],
+        "category_model": reg["category"]["model"],
         "category_encoder": reg["category"]["encoder"],
+        "severity_model": reg["severity"]["model"],
         "severity_encoder": reg["severity"]["encoder"],
+        "sbert_model_name": reg["severity"]["sbert_model_name"],
         "version": reg["version"]
     }
