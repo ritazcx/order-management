@@ -40,7 +40,7 @@ def get_version(request: Request):
     return predictor.get_model_version()
 
 @app.post("/predict", response_model=TicketResponse)
-def predict_ticket(req: TicketRequest):
+def predict_ticket(req: TicketRequest, request: Request):
 
     # input validation
     if not req.text or len(req.text.strip()) == 0:
